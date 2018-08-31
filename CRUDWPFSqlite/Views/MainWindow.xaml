@@ -15,7 +15,7 @@
 
         </Grid.RowDefinitions>
         <!--<ContentControl prism:RegionManager.RegionName="ContentRegion"></ContentControl>-->
-        <DataGrid x:Name="GridContact"  ItemsSource="{Binding Contacts}" Grid.Row="0">
+        <DataGrid x:Name="GridContact"  ItemsSource="{Binding Contacts}" Grid.Row="0" SelectedValue="{Binding Contact}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ContactId}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
@@ -24,16 +24,23 @@
 
 
             </DataGrid.Columns>
+            <!--<DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow" >
+                    <EventSetter Event="MouseDoubleClick" Handler="{Binding RowSelected}"></EventSetter>
+                </Style>
+            </DataGrid.ItemContainerStyle>-->
         </DataGrid>
 
-        <StackPanel Grid.Row="1" Margin="0,0,446,20">
+        <StackPanel Grid.Row="1" Margin="10,10,446,10" HorizontalAlignment="Center" >
             <Label>Name</Label>
-            <TextBox Name="txtName" Text="{Binding Contact.Name}"></TextBox>
-            <Label>Phone </Label>
+            <TextBox Name="txtName" Text="{Binding Contact.Name}" ></TextBox>
+            <Label>Phone</Label>
             <TextBox Name="txtPhone" Text="{Binding Contact.PhoneNumber}"></TextBox>
             <Label>Email</Label>
             <TextBox Name="txtEmail" Text="{Binding Contact.Email}"></TextBox>
-            <Button Name="btnSubmit" Margin="10 10 10 10" Width="100" Command="{Binding SubmitCmd}" >Submit</Button>  
+            <Button Name="btnSubmit" Margin="123,10,0,0" Command="{Binding SubmitCmd}" HorizontalAlignment="Left" Width="100" >Submit</Button>
         </StackPanel>
+
+      
     </Grid>
 </Window>

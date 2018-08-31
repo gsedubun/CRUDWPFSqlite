@@ -15,7 +15,12 @@ namespace CRUDWPFSqlite.ViewModels
         private Contact _Contact;
 
         private IEnumerable<Contact> _Contacts;
-        public IEnumerable<Contact> Contacts { get { return _Contacts; } set { SetProperty(ref _Contacts, value); } }
+        public IEnumerable<Contact> Contacts
+        {
+            get { return _Contacts; }
+            set { SetProperty(ref _Contacts, value); }
+        }
+
         public Contact Contact
         {
             get { return _Contact; }
@@ -40,7 +45,12 @@ namespace CRUDWPFSqlite.ViewModels
         }
         private void Submit()
         {
-            PhoneBookRepo.Add(Contact);
+            if (Contact.ContactId == 0)
+            {
+                PhoneBookRepo.Add(Contact);
+            }
+            else
+                PhoneBookRepo.Update(Contact.ContactId, Contact);
             ResetGrid();
         }
 
